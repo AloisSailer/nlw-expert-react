@@ -1,4 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog"
+import { formatDistanceToNow } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 interface NoteCardProps {
   note: {
@@ -18,9 +20,17 @@ export function NoteCard({ note }: NoteCardProps) {
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none" />
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="inset-0 fixed bg-black/60" />
-        <Dialog.Content className="z-10 bg-white absolute">
-          Oiiiie
+        <Dialog.Overlay className="inset-0 fixed bg-black/50" />
+        <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[640px] w-full h-[60vh] bg-slate-700 rounded-md flex flex-col outline-none">
+          <div className="flex flex-1 flex-col gap-5 p-5">
+            <span className="text-sm font-medium text-slate-300">
+              {formatDistanceToNow(note.date, {
+                locale: ptBR,
+                addSuffix: true,
+              })}
+            </span>
+            <p className="text-sm leading-6 text-slate-400">{note.content}</p>
+          </div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
