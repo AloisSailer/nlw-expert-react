@@ -51,7 +51,7 @@ export function NewNoteCard() {
                   <button className="font-medium text-lime-400 hover:underline">
                     gravando uma nota
                   </button>{" "}
-                  em áudio ou se preferir
+                  em áudio ou se preferir{" "}
                   <button
                     onClick={handleStartEditor}
                     className="font-medium text-lime-400 hover:underline"
